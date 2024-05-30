@@ -110,7 +110,12 @@ ORDER BY s1.student_id, s2.subject_name
 
 570. Managers with at Least 5 Direct Reports (Medium)
 ````sql
-Not finished
+SELECT e1.name
+FROM Employee e1
+JOIN Employee e2
+  ON e1.id = e2.managerId
+GROUP BY e1.id
+HAVING COUNT(e2.managerId) >= 5
 ````
 
 1934. Confirmation Rate (Medium)
@@ -161,7 +166,16 @@ ORDER BY percentage DESC, contest_id
 
 1211. Queries Quality and Percentage (Easy)
 ````sql
-Not finished
+select
+    query_name,
+    round(avg(rating/position), 2) as quality,
+    round(sum(if(rating < 3,1,0)) * 100 / count(*), 2) as poor_query_percentage
+from
+    Queries
+where 
+    query_name is not null
+group by
+    query_name
 ````
 
 1193. Monthly Transactions I (Medium)
