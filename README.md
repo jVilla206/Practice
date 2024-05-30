@@ -15,4 +15,5 @@ Learning resources
 Interview Prep
 * [LeetCode](https://leetcode.com/studyplan/top-sql-50/)
 * [HackerRank](https://www.hackerrank.com/domains/sql)
+* [StrataScratch](https://www.stratascratch.com/blog/categories/sql/)
 * [DataLemur](https://datalemur.com/questions) (Not currently using)
