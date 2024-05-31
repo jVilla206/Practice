@@ -180,7 +180,13 @@ group by
 
 1193. Monthly Transactions I (Medium)
 ````sql
-Not finished
+SELECT SUBSTRING(trans_date, 1, 7) AS month
+      ,country
+      ,COUNT(*) AS trans_count
+      ,SUM(CASE WHEN state = 'approved' THEN 1 ELSE 0 END) AS approved_count
+      ,SUM(amount) AS trans_total_amount
+      ,SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) AS approved_total_amount
+FROM transactions
 ````
 
 1174. Immediate Food Delivery II (Medium)
@@ -258,7 +264,15 @@ Not finished
 ### Advanced Select and Joins
 1731. The Number of Employees Which Report to Each Employee (Easy)
 ````sql
-Not finished
+SELECT e1.employee_id
+      ,e1.name
+      ,COUNT(e2.employee_id) AS reports_count
+      ,ROUND(AVG(e2.age), 0) AS average_age
+FROM employees e1
+JOIN employees e2
+  ON e1.employee_id = e2.reports_to
+GROUP BY e1.employee_id
+ORDER BY e1.employee_id
 ````
 
 1789. Primary Department for Each Employee (Easy)
@@ -299,7 +313,11 @@ Not finished
 ### Subqueries
 1978. Employees Whose Manager Left the Company (Easy)
 ````sql
-Not finished
+SELECT employee_id
+FROM employees
+WHERE salary < 30000
+  AND manager_id NOT IN (SELECT employee_id FROM employees)
+ORDER BY employee_id
 ````
 
 626. Exchange Seats (Medium)
