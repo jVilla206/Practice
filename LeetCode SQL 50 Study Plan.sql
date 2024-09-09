@@ -280,9 +280,13 @@ ORDER BY e1.employee_id
 Not finished
 ````
 
-10. Triangle Judgement (Easy)
+610. Triangle Judgement (Easy)
 ````sql
-Not finished
+SELECT *,
+       CASE WHEN (x + y > z AND x + z > y AND y + z > x) THEN 'Yes'
+       ELSE 'No'
+       END AS triangle
+FROM Triangle
 ````
 
 180. Consecutive Numbers (Medium)
